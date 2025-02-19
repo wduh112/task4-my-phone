@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ro">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Folder Fals</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #222; color: #ddd; padding: 20px; }
+        h1 { text-align: center; }
+        .folder { margin-bottom: 20px; }
+        .folder-title { font-weight: bold; }
+        ul { list-style-type: none; padding-left: 20px; }
+        li { margin: 5px 0; }
+        a { text-decoration: none; color: #4DB8FF; cursor: pointer; }
+        a:hover { text-decoration: underline; }
+        .hidden { display: none; }
+    </style>
+</head>
+
+<body>
+    <h1>📁 Fake Directory</h1>
+
+    <!-- Apps Folder -->
+    <div class="folder">
+        <div class="folder-title">📂 Apps:</div>
+        <ul>
+            <li>google.exe</li>
+            <li>filmora.exe</li>
+            <li>
+                📂 <a onclick="toggleVisibility('system-folder')">System</a>
+                <ul id="system-folder" class="hidden">
+                    <li>config.sys (Error: Access Denied)</li>
+                    <li>backup.log (Checksum Failed)</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Photos Folder -->
+    <div class="folder">
+        <div class="folder-title">📂 Photos:</div>
+        <ul>
+            <li><a href="#">vacation.jpg</a> (File Corrupted)</li>
+            <li><a href="#">secret.png</a> (Empty Image)</li>
+        </ul>
+    </div>
+
+    <!-- Security Folder -->
+    <div class="folder">
+        <div class="folder-title">📂 Security:</div>
+        <ul>
+            <li><a href="#">emails.txt</a> (Contains: "Password: 4321 (Expired)")</li>
+            <li>
+                📂 <a onclick="toggleVisibility('backup-folder')">Backup</a>
+                <ul id="backup-folder" class="hidden">
+                    <li><a onclick="toggleVisibility('logs')">logs.txt</a></li>
+                    <ul id="logs" class="hidden">
+                        <li>[2024-01-02] User Access: Granted</li>
+                        <li>[Hidden] Code: <span id="encoded">MTI0Nw==</span></li>
+                        <li>[2024-01-04] Error: Invalid Key</li>
+                    </ul>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Videos Folder -->
+    <div class="folder">
+        <div class="folder-title">📂 Videos:</div>
+        <ul>
+            <li><a href="#">singuracasa.mp3</a></li>
+            <li><a href="#">grinch.mp3</a></li>
+            <li><a href="#">corrupted.mp4</a> (File Error)</li>
+        </ul>
+    </div>
+
+    <!-- Documents Folder -->
+    <div class="folder">
+        <div class="folder-title">📂 Documents:</div>
+        <ul>
+            <li><a href="#">tax_info.pdf</a> (File Not Found)</li>
+            <li><a href="#">projects.txt</a> (Unintelligible Content)</li>
+        </ul>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        function toggleVisibility(id) {
+            const element = document.getElementById(id);
+            element.style.display = (element.style.display === "none") ? "block" : "none";
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const encoded = document.getElementById("encoded");
+            encoded.textContent = atob(encoded.textContent);
+        });
+    </script>
+
+</body>
+
+</html>
